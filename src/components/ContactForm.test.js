@@ -1,27 +1,27 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, userEvent } from "@testing-library/react";
 import ContactForm from "./ContactForm";
 
 test("inputs are visible", () => {
   // ARRANGE - set up the testing environment
-  const { getByText } = render(<ContactForm />);
+  const { getByTestId } = render(<ContactForm />);
 
   // ACT -no action
 
   // ASSERT
-  getByText(/first name/i);
-  getByText(/last name/i);
-  getByText(/email/i);
-  getByText(/message/i);
+  getByTestId("fname");
+  getByTestId("lname");
+  getByTestId("email");
+  getByTestId("message");
 });
 
 test("Submit filled out form", () => {
-  const { getByText, getByTestId } = render(<ContactForm />);
+  const { getByTestId } = render(<ContactForm />);
   // ARRANGE -set up the testing environment
-  const fnameInput = getByText(/first name/i);
-  const lnameInput = getByText(/last name/i);
-  const emailInput = getByText(/email/i);
-  const messageInput = getByText(/message/i);
+  const fnameInput = getByTestId("fname");
+  const lnameInput = getByTestId("lname");
+  const emailInput = getByTestId("email");
+  const messageInput = getByTestId("message");
 
   // ACT
   fireEvent.change(fnameInput, { target: { value: "Chadwick" } });

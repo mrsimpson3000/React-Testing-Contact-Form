@@ -32,4 +32,8 @@ test("Submit filled out form", () => {
   });
 
   // ASSERT
+  expect(fnameInput.value).toBe("Chadwick");
+  expect(lnameInput).toBe("Simpson");
+  expect(emailInput).toBe("mrsimpson3000@gmail.com");
+  expect(messageInput).toBe("I am here and you are not here.");
 });
